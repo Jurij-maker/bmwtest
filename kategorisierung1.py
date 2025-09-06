@@ -1,5 +1,6 @@
 
 import json
+
 import numpy as np
 from matplotlib import pyplot as plt
 bmw300251= open('m3comp.json',)
@@ -19,7 +20,7 @@ def is318i(i):
     else:
         return False
 
-def is318d(d):
+def is318d(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if i["attributes"]["Fuel"] == "Diesel":
             if i["model"]=="318":
@@ -36,7 +37,7 @@ def is320i(i):
     else:
         return False
 
-def is320d(d):
+def is320d(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if i["attributes"]["Fuel"] == "Diesel":
             if i["model"]=="320":
@@ -44,7 +45,7 @@ def is320d(d):
     else:
         return False
 
-def is320e(d):
+def is320e(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if "Hybrid" in i["attributes"]["Fuel"]:
             if i["model"]=="320":
@@ -68,7 +69,7 @@ def is320i(i):
     else:
         return False
 
-def is320d(d):
+def is320d(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if i["attributes"]["Fuel"] == "Diesel":
             if i["model"]=="320":
@@ -76,7 +77,7 @@ def is320d(d):
     else:
         return False
 
-def is320e(d):
+def is320e(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if "Hybrid" in i["attributes"]["Fuel"]:
             if i["model"]=="320":
@@ -100,7 +101,7 @@ def is330d(d):
     else:
         return False
 
-def is330e(d):
+def is330e(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if "Hybrid" in i["attributes"]["Fuel"]:
             if i["model"]=="330":
@@ -156,6 +157,8 @@ def modellzuordnung(auto):
     else:
         return 0
 
+
+
 def modellzuordnung(auto):
     if is318i(auto):
         return "318i"
@@ -183,6 +186,17 @@ def modellzuordnung(auto):
         return"M3Competition"
     else:
         return ("")
+
+def sonderausstattung(i):
+    trimlinemsport=["M Sport", "m sport", "M sport", "M Sportpaket", "M-Sport"]
+    if "Trim line" in i["attributes"]:
+        if any(i["attributes"]["Trim line"] in trimlinemsport):
+            return "msport"
+
+
+    else:
+        return "normal"
+
 
 
 for i in data1:
