@@ -1,4 +1,4 @@
-from kategorisierung1 import modellzuordnung
+from modellzuordnung import modellzuordnung
 
 import json
 import numpy as np
