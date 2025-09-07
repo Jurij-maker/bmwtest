@@ -17,15 +17,25 @@ def is320d(i):
 
 
 
-for x in data:
-    print(x['title'])
-    print(x['price']['total']['amount'])
+#for x in data:
+#    print(x['title'])
+ #   print(x['price']['total']['amount'])
 
 def getprice(i):
-    if "amount" in i['price']['total']:
+    price = 0
+    if "price" in i:
         price = i['price']['total']['amount']
-        return price
-    else:
-        return "0"
+    elif "price.total.amount" in i:
+        price = i["price.total.amount"]
+
+    return price
+
+
+
+
+
+
+for i in luxuryline1:
+    print(getprice(i))
 
 
