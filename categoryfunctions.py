@@ -10,6 +10,19 @@ bmw3er=open("bmw30025.json")
 bmw3er1=json.load(bmw3er)
 data=bmw3er1
 
+
+def isdamaged(i):
+    if "Vehicle condition" in i["attributes"]:
+        condition = i["attributes"]["Vehicle condition"]
+        if "damage" in condition:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+
 def is318i(i):
     if "Fuel" in i["attributes"] and "model" in i:
         if i["attributes"]["Fuel"] == "Petrol" or i["attributes"]["Fuel"] == "Petrol, E10-enabled":
@@ -202,7 +215,11 @@ def sonderausstattung3(i):
 
     return response
 
-
+def sonderausstattung4(i):
+    if isM340i(i) or isM340d(i) or isM3(i) or isM3Competition(i):
+        return "M"
+    else:
+        return"normal"
 
 def sonderausstattunggesamt(i):
     if sonderausstattung1(i) == "msport":
@@ -211,6 +228,8 @@ def sonderausstattunggesamt(i):
         return "luxuryline"
     elif sonderausstattung3(i)== "sportline":
         return "sportline"
+    elif sonderausstattung4(i)=="M":
+        return"M"
     else:
         return "normal"
 

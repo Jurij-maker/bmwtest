@@ -1,4 +1,4 @@
-from categoryfunctions import modellzuordnung, sonderausstattunggesamt, fuel, transmission, twoor4wheel, categorizekm, hasACC, haspano, dealer
+from categoryfunctions import modellzuordnung, sonderausstattunggesamt, fuel, transmission, twoor4wheel, categorizekm, hasACC, haspano, dealer, isdamaged
 
 import json
 
@@ -13,7 +13,8 @@ bmw3er1=json.load(bmw3er)
 data=bmw3er1
 
 auto = bmw30025[35]
-
+print("schaden")
+print(isdamaged(auto))
 print("Modellzuordnung")
 print(modellzuordnung(auto))
 print("Sonderausstattung")
