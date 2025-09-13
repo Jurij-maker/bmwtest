@@ -1,4 +1,4 @@
-from categoryfunctions import modellzuordnung, sonderausstattunggesamt, fuel, transmission, twoor4wheel, categorizekm, hasACC, haspano, dealer, isdamaged
+from categoryfunctions import modellzuordnung, sonderausstattunggesamt, fuel, transmission, twoor4wheel, categorizekm, hasACC, haspano, dealer, isdamaged, getprice
 import pandas as pd
 import json
 
@@ -14,7 +14,7 @@ data=bmw3er1
 
 #auto = bmw30025[35]
 
-dfgesamt = pd.DataFrame(columns=['Modell','Sonderausstattung','Transmission','Wheeldrive', 'km','ACC','Pano','Dealer'])
+dfgesamt = pd.DataFrame(columns=['Modell','Sonderausstattung','Transmission','Wheeldrive', 'km','ACC','Pano','Dealer','Price'])
 
 for auto in bmw30025:
 
@@ -45,11 +45,15 @@ for auto in bmw30025:
     if dealer =="":
         continue
 
+    price = getprice(auto)
+    if price == 0:
+        continue
 
 
-    dfgesamt.loc[len(dfgesamt)]=[modell, sonderausstattung, transmission1, wheels, kmcateogorie, ACC, pano, dealer1]
 
-print(dfgesamt)
+    dfgesamt.loc[len(dfgesamt)]=[modell, sonderausstattung, transmission1, wheels, kmcateogorie, ACC, pano, dealer1, price]
+
+print(dfgesamt.to_string())
 
 #for i in bmw3er1:
 #    print(isdamaged(i))

@@ -318,6 +318,17 @@ def haspano(i):
                 response = "pano"
     return response
 
+def getprice(i):
+    price = 0
+    if "price" in i:
+        price = i['price']['total']['amount']
+    elif "price.total.amount" in i:
+        price = i["price.total.amount"]
+
+    return price
+
+
+
 def dealer(auto):
     if "sellerType" in auto["dealerDetails"]:
         type = auto["dealerDetails"]["sellerType"]
