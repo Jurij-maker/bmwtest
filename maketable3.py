@@ -1,4 +1,5 @@
 from categoryfunctions import modellzuordnung, sonderausstattunggesamt, fuel, transmission, twoor4wheel, categorizekm, hasACC, haspano, dealer, isdamaged, getprice
+from categorytonumber import categorynumber
 import pandas as pd
 import json
 

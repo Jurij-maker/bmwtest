@@ -185,6 +185,8 @@ def modellzuordnung(auto):
 def sonderausstattung1(i):
     trimlinemsport = ["M Sport", "m sport", "M sport", "M Sportpaket", "M-Sport", "msport", "MSport", "MSPORT", "M. Paket"]
     response = "normal"
+    if isM3(i) or isM3Competition(i):
+        return "M"
     if "Trim line" in i["attributes"]:
         trimline = i["attributes"]["Trim line"]
         for a in trimlinemsport:
@@ -318,6 +320,20 @@ def haspano(i):
                 response = "pano"
     return response
 
+
+def getkarosserie(i):
+    response =""
+    if "category" in i:
+        a=i["category"]
+        if "Estate" in a:
+            response = "estate"
+        elif "Limou" in a:
+            response = "limou"
+
+
+    return response
+
+
 def getprice(i):
     price = 0
     if "price" in i:
@@ -341,3 +357,5 @@ def dealer(auto):
             return ""
     else:
         return ""
+
+getkarosserie(data)
