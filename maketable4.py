@@ -14,7 +14,8 @@ bmw3er=open("bmw30025.json")
 bmw3er1=json.load(bmw3er)
 data=bmw3er1
 
-
+luxuryline = open('luxuryline.json')
+luxuryline1 = json.load(luxuryline)
 
 def preisevondf(df):
     preisliste=[]
@@ -69,15 +70,16 @@ def schaubildprivathaendler(listepreisprivat, listepreishaendler):
     plt.legend(['privat', 'haendler'], loc='upper right')
     plt.show()
 
-listepandas = listpandasfromjsonsorted(data1)
+listepandas = listpandasfromjsonsorted(data)
 #pandas = listpandasfromjsonsorted(data1)
 #pandas.sort_values(by='Category')
-#print(pandas.to_string())
+liste=listepandas.sort_values(by='Category')
+print(liste.to_string())
 
 
 #test1(listepandas)
 
-haendlerliste, privatliste = preiseprivathaendler(listepandas, 613067)
+haendlerliste, privatliste = preiseprivathaendler(listepandas, 363219)
 print(len(haendlerliste))
 print(len(privatliste))
 schaubildprivathaendler(privatliste, haendlerliste)

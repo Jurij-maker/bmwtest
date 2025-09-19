@@ -19,7 +19,7 @@ def listpandasfromjsonsorted(jsonauto):
 
     dfgesamt = pd.DataFrame(columns=['Modell','Sonderausstattung','Transmission','Wheeldrive', 'km','ACC','Pano', 'Karosserie', 'Dealer','Price','Category'])
 
-    for auto in bmw30025:
+    for auto in jsonauto:
         catnumber=0
 
         if isdamaged(auto) == True:
@@ -83,6 +83,6 @@ def listpandasfromjsonsorted(jsonauto):
 #sorted_dfgesamt = dfgesamt.sort_values(by='Category')
 
 #print(sorted_dfgesamt.to_string())
-pandas = listpandasfromjsonsorted(data1)
-pandas1 = pandas.sort_values(by='Category')
-print(pandas1.to_string())
+#pandas = listpandasfromjsonsorted(data1)
+#pandas1 = pandas.sort_values(by='Category')
+#print(pandas1.to_string())

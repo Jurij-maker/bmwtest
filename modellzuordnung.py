@@ -173,7 +173,7 @@ def modellzuordnung(auto):
     elif is330i(auto):
         return "330i"
     elif is330d(auto):
-        return "303d"
+        return "330d"
     elif is330e(auto):
         return "330e"
     elif isM340i(auto):
